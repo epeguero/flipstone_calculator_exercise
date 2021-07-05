@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/main.css">
+<title>Coding Exercise: Browser-based Javascript Calculator</title>
+</head>
+<body>
+
+<div class="header">
+    <img src='/images/mascot.png' class='mascot'>
+    <div>
+        <h1> Coding Exercise: Browser-based Javascript Calculator </h1>
+        <p> by: Edwin Peguero </p>
+    </div>
+</div>
+
+<div class="calc">
+    <div id="calc-result">0</div>
+    <div class="calc-pad">
+        <div class="padding"> </div>
+        <button class="calc-button op-button">/</button>
+        <button class="calc-button num-button">7</button>
+        <button class="calc-button num-button">8</button>
+        <button class="calc-button num-button">9</button>
+        <button class="calc-button op-button">*</button>
+        <button class="calc-button num-button">4</button>
+        <button class="calc-button num-button">5</button>
+        <button class="calc-button num-button">6</button>
+        <button class="calc-button op-button">-</button>
+        <button class="calc-button num-button">1</button>
+        <button class="calc-button num-button">2</button>
+        <button class="calc-button num-button">3</button>
+        <button class="calc-button op-button">+</button>
+        <button class="calc-button num-button zero-btn">0</button>
+        <button class="calc-button" id="dot-button">.</button>
+        <button class="calc-button op-button">=</button>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="js/calculator.js"></script>
+<script>
+    window.onload = () => {
+        let resultView = document.getElementById('calc-result');
+        let stack = [];
+        const calcBtnController = (input) => {
+            return () => {
+                resultView.innerText = calculator(stack, input);
+            }
+        }
+
+        let calcBtns = document.getElementsByClassName('calc-button');
+        for (const btn of calcBtns) {btn.onclick = calcBtnController(btn.innerText);}
+    }
+</script>
+
+</html>
